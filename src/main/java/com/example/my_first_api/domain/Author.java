@@ -1,4 +1,5 @@
 package com.example.my_first_api.domain;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -19,7 +20,7 @@ private String lastName;
 
 @ManyToMany(mappedBy = "authors")
 
-private Set<Book> books;
+private Set<Book> books = new HashSet<>();
 
 
 
