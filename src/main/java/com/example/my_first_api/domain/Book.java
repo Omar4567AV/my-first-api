@@ -68,6 +68,8 @@ public class Book {
     }
 
 
+    public void settitle(String dom) {
+    }
 }
 
 
