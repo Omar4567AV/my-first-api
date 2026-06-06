@@ -10,7 +10,9 @@ import jakarta.persistence.ManyToMany;
 public class Author {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-private String firstName;
+private long id;
+    private String firstName;
+
 private String lastName;
 
 @ManyToMany(mappedBy = "authors")
@@ -37,4 +39,38 @@ public String getLastName() {
 public void setLastName(String lastName) {
     this.lastName = lastName;
 }
+
+
+public long getId() {
+    return id;
+}
+public void setId(long id) {
+    this.id = id;
+}
+@Override
+public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + (int) (id ^ (id >>> 32));
+    return result;
+}
+@Override
+public boolean equals(Object obj) {
+    if (this == obj)
+        return true;
+    if (obj == null)
+        return false;
+    if (getClass() != obj.getClass())
+        return false;
+    Author other = (Author) obj;
+    if (id != other.id)
+        return false;
+    return true;
+}
+@Override
+public String toString() {
+    return "Author [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", books=" + books + "]";
+}
+
+
 }
