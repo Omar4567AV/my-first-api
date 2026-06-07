@@ -83,5 +83,4 @@ public class Publisher {
                 "id=" + id +
                 '}';
     }
-
 }
