@@ -1,14 +1,10 @@
 package com.example.my_first_api.domain;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
@@ -24,6 +20,19 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
+
+
+
+    @ManyToOne
+    private Publisher publisher;
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
     // 2. Keep the getter clean
     public Set<Author> getAuthors() {
